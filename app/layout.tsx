@@ -28,6 +28,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
+        <script src="http://localhost:5173/dist-snippet/snippet.iife.js" data-key="a46ffeee-1fdc-41dd-9ad2-853c719dba66"></script>
       </body>
     </html>
   );
