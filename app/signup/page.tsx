@@ -5,15 +5,15 @@ export default function SignupPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  // ❌ BUG 1 : validation cassée (toujours false)
-  const formValid = false; // <-- l'IA devra corriger ça
+  // Corrected form validation logic
+  const formValid = email !== "" && password !== "";
 
-  // ❌ BUG 2 : wording cassé
-  const buttonLabel = "Créeeeer mon compte"; // faute volontaire
+  // Corrected button label
+  const buttonLabel = "Cr�er mon compte";
 
-  // ❌ BUG 3 : style cassé
+  // Corrected button styles
   const buttonStyles =
-    "w-full mt-[-20px] p-1 bg-blue-600 text-white rounded opacity-40"; // margin-top négatif
+    "w-full p-1 bg-blue-600 text-white rounded"; // Removed negative margin-top and opacity
 
   return (
     <div className="max-w-md mx-auto mt-20 p-6 border rounded-lg shadow">
