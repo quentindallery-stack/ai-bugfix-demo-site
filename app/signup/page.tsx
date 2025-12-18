@@ -1,3 +1,4 @@
+x
 "use client";
 import { useState } from "react";
 
@@ -12,14 +13,12 @@ export default function SignupPage() {
   const [acceptedTerms, setAcceptedTerms] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
-
   const emailValid = /\S+@\S+\.\S+/.test(email);
   const passwordValid = password.length >= 8;
   const passwordsMatch = password === confirm;
   const nameValid = firstName.trim() !== "" && lastName.trim() !== "";
 
   const formValid = emailValid && passwordValid && passwordsMatch && nameValid && acceptedTerms;
-
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -51,8 +50,6 @@ export default function SignupPage() {
           />
           {email && !emailValid && <p className="text-sm text-red-500 mt-1">Adresse email invalide</p>}
 
-
-
           <label className="block mb-2 mt-4 text-sm label">Mot de passe</label>
           <input
             type="password"
@@ -71,15 +68,15 @@ export default function SignupPage() {
           />
           {confirm && !passwordsMatch && <p className="text-sm text-red-500 mt-1">Les mots de passe ne correspondent pas</p>}
 
-<label className="mt-4 flex items-center gap-2 text-sm label">
+          <label className="mt-4 flex items-center gap-2 text-sm label">
             <input type="checkbox" checked={acceptedTerms} onChange={(e) => setAcceptedTerms(e.target.checked)} />
             J'accepte les conditions d'utilisation
           </label>
 
           <button
             type="submit"
-            disabled={true}
-            className="btn btn-gradient w-full mt-6 opacity-50 cursor-not-allowed"
+            disabled={!formValid}
+            className={`btn btn-gradient w-full mt-6 ${!formValid ? "opacity-50 cursor-not-allowed" : ""}`}
           >
             Créer mon compte
           </button>
