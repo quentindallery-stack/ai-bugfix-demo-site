@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import Link from "next/link";
+import Script from "next/script";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -26,8 +28,8 @@ function Header() {
           <span className="font-bold">SSD siteweb</span>
         </div>
         <nav className="space-x-4 text-sm text-muted">
-          <a href="/" className="hover:underline">Accueil</a>
-          <a href="/signup" className="hover:underline">Inscription</a>
+          <Link href="/" className="hover:underline">Accueil</Link>
+          <Link href="/signup" className="hover:underline">Inscription</Link>
         </nav>
       </div>
     </header>
@@ -53,7 +55,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           {children}
         </main>
         <Footer />
-        <script src="http://localhost:5173/dist-snippet/snippet.iife.js" data-key="a46ffeee-1fdc-41dd-9ad2-853c719dba66"></script>
+        <Script src="http://localhost:5173/dist-snippet/snippet.iife.js" strategy="afterInteractive" data-key="a46ffeee-1fdc-41dd-9ad2-853c719dba66" />
       </body>
     </html>
   );
