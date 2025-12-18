@@ -1,5 +1,6 @@
+x
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function SignupPage() {
   const [firstName, setFirstName] = useState("");
@@ -12,7 +13,6 @@ export default function SignupPage() {
   const [acceptedTerms, setAcceptedTerms] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
-
   const emailValid = /\S+@\S+\.\S+/.test(email);
   const passwordValid = password.length >= 8;
   const passwordsMatch = password === confirm;
@@ -20,6 +20,16 @@ export default function SignupPage() {
 
   const formValid = emailValid && passwordValid && passwordsMatch && nameValid && acceptedTerms;
 
+  useEffect(() => {
+    const submitButton = document.querySelector('button[type="submit"]');
+    if (formValid) {
+      submitButton?.classList.remove('opacity-50', 'cursor-not-allowed');
+      submitButton?.removeAttribute('disabled');
+    } else {
+      submitButton?.classList.add('opacity-50', 'cursor-not-allowed');
+      submitButton?.setAttribute('disabled', 'true');
+    }
+  }, [formValid]);
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -45,13 +55,12 @@ export default function SignupPage() {
         <form onSubmit={handleSubmit}>
           <label className="block mb-2 text-sm label">Email</label>
           <input
+            type="email"
             className={`input ${email && !emailValid ? "border-red-400" : ""}`}
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
           {email && !emailValid && <p className="text-sm text-red-500 mt-1">Adresse email invalide</p>}
-
-
 
           <label className="block mb-2 mt-4 text-sm label">Mot de passe</label>
           <input
@@ -71,7 +80,7 @@ export default function SignupPage() {
           />
           {confirm && !passwordsMatch && <p className="text-sm text-red-500 mt-1">Les mots de passe ne correspondent pas</p>}
 
-<label className="mt-4 flex items-center gap-2 text-sm label">
+          <label className="mt-4 flex items-center gap-2 text-sm label">
             <input type="checkbox" checked={acceptedTerms} onChange={(e) => setAcceptedTerms(e.target.checked)} />
             J'accepte les conditions d'utilisation
           </label>
