@@ -1,19 +1,37 @@
+x
 "use client";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 
 export default function SignupPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const submitButtonRef = useRef(null);
 
-  // ❌ BUG 1 : validation cassée (toujours false)
-  const formValid = false; // <-- l'IA devra corriger ça
+  // Corrected form validation logic
+  const formValid = email.trim() !== "" && password.trim() !== "";
 
-  // ❌ BUG 2 : wording cassé
-  const buttonLabel = "Créeeeer mon compte"; // faute volontaire
+  // Corrected button label
+  const buttonLabel = "Cr�er mon compte";
 
-  // ❌ BUG 3 : style cassé
+  // Corrected button styles
   const buttonStyles =
-    "w-full mt-[-20px] p-1 bg-blue-600 text-white rounded opacity-40"; // margin-top négatif
+    "w-full p-1 bg-blue-600 text-white rounded"; // Removed negative margin-top
+
+  useEffect(() => {
+    const submitButton = submitButtonRef.current;
+
+    function toggleButtonState() {
+      if (formValid) {
+        submitButton.classList.remove("opacity-40");
+        submitButton.disabled = false;
+      } else {
+        submitButton.classList.add("opacity-40");
+        submitButton.disabled = true;
+      }
+    }
+
+    toggleButtonState();
+  }, [email, password, formValid]);
 
   return (
     <div className="max-w-md mx-auto mt-20 p-6 border rounded-lg shadow">
@@ -34,7 +52,7 @@ export default function SignupPage() {
         onChange={(e) => setPassword(e.target.value)}
       />
 
-      <button disabled={!formValid} className={buttonStyles}>
+      <button ref={submitButtonRef} className={`${buttonStyles} opacity-40`}>
         {buttonLabel}
       </button>
     </div>
