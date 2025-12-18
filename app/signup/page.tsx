@@ -1,19 +1,19 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function SignupPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  // ❌ BUG 1 : validation cassée (toujours false)
-  const formValid = false; // <-- l'IA devra corriger ça
+  // Fixing validation logic
+  const formValid = email.includes('@') && email.length > 0 && password.length >= 6;
 
-  // ❌ BUG 2 : wording cassé
-  const buttonLabel = "Créeeeer mon compte"; // faute volontaire
+  // Fixing wording
+  const buttonLabel = "Cr�er mon compte";
 
-  // ❌ BUG 3 : style cassé
+  // Fixing style
   const buttonStyles =
-    "w-full mt-[-20px] p-1 bg-blue-600 text-white rounded opacity-40"; // margin-top négatif
+    "w-full p-1 bg-blue-600 text-white rounded opacity-40"; // Removed negative margin-top
 
   return (
     <div className="max-w-md mx-auto mt-20 p-6 border rounded-lg shadow">
@@ -21,6 +21,7 @@ export default function SignupPage() {
 
       <label className="block mb-2">Email</label>
       <input
+        type="email"
         className="w-full border border-gray-300 rounded p-2 mb-4"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
