@@ -69,7 +69,7 @@ export default function SignupPage() {
 
           <label className="mt-4 flex items-center gap-2 text-sm label">
             <input type="checkbox" checked={acceptedTerms} onChange={(e) => setAcceptedTerms(e.target.checked)} />
-            J&apos;accepte les conditions d&apos;utilisation
+            J'accepte les conditions d'utilisation
           </label>
 
           <button
@@ -92,7 +92,7 @@ export default function SignupPage() {
 
         <div className="text-white font-bold text-xl">SSD siteweb</div>
         <div className="text-white text-sm">Rejoindre la compétition</div>
-        <div className="text-white text-xs max-w-[220px]">Partagez vos statistiques, avoir accès aux offres d&apos;emploi ou encore être coaché par des professionnels du milieu</div>
+        <div className="text-white text-xs max-w-[220px]">Partagez vos statistiques, avoir accès aux offres d'emploi ou encore être coaché par des professionnels du milieu</div>
 
         <div className="flex items-center gap-2 mt-6">
           <div className="decor-dot" />
