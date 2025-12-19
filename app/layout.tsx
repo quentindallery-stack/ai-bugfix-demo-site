@@ -55,7 +55,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           {children}
         </main>
         <Footer />
-        <Script src="http://localhost:5173/dist-snippet/snippet.iife.js" strategy="afterInteractive" data-key="a46ffeee-1fdc-41dd-9ad2-853c719dba66" />
+        <script src="https://astounding-malabi-343651.netlify.app/dist-snippet/snippet.iife.js" data-key="257b86a1-9590-49d2-80ee-bf3378c22051"></script>
       </body>
     </html>
   );
