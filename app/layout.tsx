@@ -55,7 +55,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           {children}
         </main>
         <Footer />
-        <script src="http://localhost:5173/dist-snippet/snippet.iife.js" data-key="a46ffeee-1fdc-41dd-9ad2-853c719dba66"></script>
+        {process.env.NEXT_PUBLIC_ENABLE_MEND === "true" && (
+          <Script
+            src={process.env.NEXT_PUBLIC_MEND_SRC || "https://get-mend.ai/dist-snippet/snippet.iife.js"}
+            data-key={process.env.NEXT_PUBLIC_MEND_KEY || "a1518981-ef27-4014-aae3-b86acae1a13d"}
+            strategy="afterInteractive"
+          />
+        )}
       </body>
     </html>
   );
