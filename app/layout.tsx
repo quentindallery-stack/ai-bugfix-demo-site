@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Script from "next/script";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -55,16 +54,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           {children}
         </main>
         <Footer />
-        {process.env.NEXT_PUBLIC_ENABLE_MEND === "true" && (
-          <>
-            <link rel="stylesheet" href={process.env.NEXT_PUBLIC_MEND_CSS || "https://get-mend.ai/assets/snippet/style.css"} />
-            <Script
-              src={process.env.NEXT_PUBLIC_MEND_SRC || "https://get-mend.ai/assets/snippet/snippet.iife.js"}
-              data-key={process.env.NEXT_PUBLIC_MEND_KEY || "a1518981-ef27-4014-aae3-b86acae1a13d"}
-              strategy="afterInteractive"
-            />
-          </>
-        )}
       </body>
     </html>
   );
