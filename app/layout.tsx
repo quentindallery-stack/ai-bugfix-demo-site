@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Script from "next/script";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -54,6 +55,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           {children}
         </main>
         <Footer />
+        <link rel="stylesheet" href="https://get-mend.ai/assets/snippet/style.css" />
+        <Script
+          src="https://get-mend.ai/assets/snippet/snippet.iife.js"
+          data-key="4e6b5c90-ca14-4334-b825-d6ce6851e2cb"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );
